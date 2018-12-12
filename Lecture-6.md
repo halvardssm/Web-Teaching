@@ -4,7 +4,7 @@
 
 *At times we use :point_up: and :point_down: to make it clear whether an explanation belongs to the code snippet above or below the text. The :bangbang: sign is added to code examples you should run yourself.*
 
-## Table of Content <!-- omit in toc -->
+## Table of Contents <!-- omit in toc -->
 - [Learning goals](#learning-goals)
 - [Organization and reusability of Node.js code](#organization-and-reusability-of-nodejs-code)
     - [A file-based module system](#a-file-based-module-system)
@@ -17,7 +17,7 @@
     - [:bangbang: Authorisation component example](#bangbang-authorisation-component-example)
     - [Components are configurable](#components-are-configurable)
 - [Routing](#routing)
-    - [Routing paths and regular expressions](#routing-paths-and-regular-expressions)
+    - [Routing paths and string patterns](#routing-paths-and-string-patterns)
     - [Routing parameters](#routing-parameters)
     - [Organizing routes](#organizing-routes)
 - [Templating with EJS](#templating-with-ejs)
@@ -73,7 +73,7 @@ module {
 }
 ```
 
-To see this for yourself, create a Node.js script containing only the line `console.log(module);` and run it. We see that currently nothing is *exported* (`exports` is empty) from this module (which makes sense, it is empty bar a single line).
+To see this for yourself, create a Node.js script containing only the line `console.log(module);` and run it. We see that currently nothing is *exported* (`exports` is empty) from this module (which makes sense, it just prints a single line).
 
 Once you have defined your own module, the globally available `require` function is used to import a module. At this stage, you should recognize that you have been using Node.js modules since your first attempts with Node.js.
 
@@ -408,11 +408,13 @@ app.get('/todos',
 
 :point_up: This code snippet contains three handlers - and each handler will be used for about one third of all clients requesting `/todos`. While this may not seem particularly useful at first, it allows you to create generic functions that can be used in any of your routes, by dropping them into the list of functions passed into `app.get()`. What is important to understand *when* to call `next` and *why* in this setting we have to use a `return` statement - without it, the function's code would be continued to be executed.
 
-### Routing paths and regular expressions
+### Routing paths and string patterns
 
-When we specify a path (like `/todos`) in a route, the path is eventually converted into a **regular expression** by Express. A regular expression is a sequence of characters. They are very powerful and allow us to specify **matching patterns** instead of hard-coding all potential routes. For example, we may want to allow users to access todos via a number of similar looking routes (such as `/todos`, `/toodos`, `/todo`). Instead of duplicating code three times for three routes, we can employ a regular expression to capture all of those similarly looking routes in one expression.
+When we specify a path (like `/todos`) in a route, the path is eventually converted into a **regular expression** (short: regex) by Express. Regular expressions are patterns to match character combinations in strings. They are very powerful and allow us to specify **matching patterns** instead of hard-coding all potential routes. For example, we may want to allow users to access todos via a number of similar looking routes (such as `/todos`, `/toodos`, `/todo`). Instead of duplicating code three times for three routes, we can employ a regular expression to capture all of those similarly looking routes in one expression.
 
-Express supports a **subset** of the standard regex meta-characters, namely: `+ ? * ( ) []`. They are used in the following manner:
+Express distinguishes three different types of route paths: strings, string patterns and regular expressions. So far, we have employed just strings to set route paths. String patterns are routes defined with strings and a subset of the standard regex meta-characters, namely: `+ ? * ( ) []`. Regular expressions contain the full range of common regex functionalities (routes defined through regular expressions are enclosed in `/ /`, not `' '`), allowing you to create arbitrarily complex patterns. If you are curious how complex regular expressions can become, take a look at the size of regular expressions to [validate email addresses](https://stackoverflow.com/questions/201323/how-to-validate-an-email-address-using-a-regular-expression).
+
+Express' string pattern meta-characters have the following interpretations:
 
 | Character | Description                                      | Regex    | Matched expressions |
 |-----------|--------------------------------------------------|----------|---------------------|
@@ -421,6 +423,36 @@ Express supports a **subset** of the standard regex meta-characters, namely: `+ 
 | *         | zero or more occurrences of any char (wildcard)  | ab*cd    | abcd, ab1234cd, …   |
 | […]       | match anything inside for one character position | ab[cd]?e | abe, abce, abde     |
 | (…)       | boundaries                                       | ab(cd)?e | abe, abcde          |
+
+It is important to realize that the use of `*` in Express' string patterns is somewhat unique. In most other languages/frameworks, whenever `*` is mentioned in relation to regular expressions, it refers to zero or more occurrences of the preceding element. In Express' string patterns, `*` is a wildcard.
+
+These meta-characters can be combined as seen here :point_down:
+
+```javascript
+app.get('/user(name)?s+', function(req,res){
+	res.send(…)
+});
+```
+
+In order to test your own string patterns, you can set up a simple server-side script such as the following :point_down:
+
+```javascript
+ var express = require("express");
+ 
+ var app = express();
+ 
+ app.get('/user(name)?s+',function(req, res){
+     res.send("Yes!");
+ });
+ 
+ app.get('*', function(req,res){
+     res.send("No!");
+ });
+ 
+ app.listen(3001);
+ ```
+
+ Once a string pattern is coded, you can simply open the browser, and test different routes, receiving a *Yes!* for a matching route and a *No!* for a non-matching route. 
 
 ### Routing parameters
 
@@ -528,6 +560,8 @@ To start the REPL, simply type `node` in the terminal and the Node shell becomes
 
 If you receive an `Error: Cannot find module 'ejs'` error after the `var ejs = require('ejs');` line, exit the shell (to do so, type `.exit`) and install the `ejs` module. To do this, run `npm install ejs` and then go back to the REPL.
 
+If you want to avoid the constant `Undefined` messages on the REPL (which are simply the return values of the commands entered), start the REPL with `node -e "require('repl').start({ignoreUndefined:true})"`. 
+
 ```javascript
 var ejs = require('ejs');
 var template = '<%= message %>'; //<%= outputs the value into the template (HTML escaped)
@@ -537,7 +571,7 @@ console.log(ejs.render(template, context));
 
 :point_up: Here, we first make the EJS object available via `require()`. Next, we define our template string. In this template we aim to replace the message with the actual data. Our `context` variable holds an object with a property `message` and value `Hello template!`. Lastly, we have to bring the template and the data together by calling `ejs.render()`. The output will be the **rendered view**. The template contains `<%=`, a so-called *scriptlet tag* to indicate the start of an element to be replaced with data as well as an ending tag `%>`.
 
-Ther are two types of scriptlet tags that output values:
+Ther are two types of scriptlet tags that **output values**:
 
 - `<%= ... %>` outputs the value into the template in **HTML escaped** form.
 - `<%- ... %>` outputs the value into the template in **unescaped** form. This enables cross-site scripting attacks, which we will discuss in [Lecture 8](Lecture-8.md).
@@ -546,8 +580,8 @@ In order to see the difference between the two types of tags, go back to Node's 
 
 ```javascript
 var ejs = require('ejs');
-var template = '<%- message %>';        //ESCAPED
-//var template = ‘<%= message %>';      //UNESCAPED
+var template = '<%- message %>';        //UNESCAPED
+//var template = ‘<%= message %>';      //ESCAPED
 var context = {message: "<script>alert('hi!');</script>"};
 console.log(ejs.render(template, context));
 ```
@@ -578,9 +612,21 @@ console.log(ejs.render(template, context));
 
 To make templates even more flexible, we can incorporate JavaScript in the template, using the `<%` scriptlet tag :point_down::
 
-![EJS and JavaScript](img/L6-ejs-js.png)
+```javascript
+var ejs = require('ejs');
 
- :point_up: The context is an array of objects, each movie with a title and release date. In the template, we use [`Array.prototype.foreach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) (it executes a provided function once per array element) to pass over the array and print out the title and release data. The `<%` scriptlet tags are used for **control-flow purposes**.
+var template = "<% if(movies.length>2){movies.forEach(function(m){console.log(m.title)})} %>";
+
+var context = {'movies': [
+  {title:'The Hobbit', release:2014},
+  {title:'X-Men', release:2016},
+  {title:'Superman V', release:2014}
+]};
+
+ejs.render(template, context);
+```
+
+ :point_up: The context is an array of objects, each movie with a title and release date. In the template, we use [`Array.prototype.forEach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) (it executes a provided function once per array element) to iterate over the array and print out the title and release date if our array has more than two elements (admittedly, not a very sensible example but it shows off the main principle). The `<%` scriptlet tags are used for **control-flow purposes**. If you replace the opening scriptlet tag with `<%-` or `<%=` (try it!), you will end up with an error.
 
 ### :bangbang: Express and templates
 

@@ -3,11 +3,11 @@ CSE1500: Web and Database Technology <!-- omit in toc -->
 
 [![Build Status](https://travis-ci.org/chauff/Web-Teaching.svg?branch=master)](https://travis-ci.org/chauff/Web-Teaching)
 
-The **Web technology materials and resources** of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. We expect 900 students in the course; the course setup reflects that.
+The **Web technology materials and resources** of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. We have ~900 students in the course; the course setup reflects that.
 
 The database materials are not included here!
 
-## Table of Content <!-- omit in toc -->
+## Table of Contents <!-- omit in toc -->
 - [Contact](#contact)
 - [Web technology course book](#web-technology-course-book)
 - [Tooling](#tooling)
@@ -18,7 +18,7 @@ The database materials are not included here!
 - [Sample exams](#sample-exams)
 - [Assignments](#assignments)
 - [Demo application](#demo-application)
-- [Werkcolleges](#werkcolleges)
+- [Werkcolleges / Tutorials](#werkcolleges--tutorials)
 - [Shared labs](#shared-labs)
 - [Office hours](#office-hours)
 - [Interactive web technology exercises](#interactive-web-technology-exercises)
@@ -70,11 +70,11 @@ If you are new to team programming, and want to use VSC's features efficiently, 
 
 ### Required 
 
-[Node.js](https://nodejs.org/en/), version 8.12 or higher (i.e. the latest stable one). If you are a Windows user, you may want to use the virtual machine from the Q1 2018/19 Computer Organisation course and install Node.js yourself; the `root` password is `cse&(]]` (yes! those are not typos, this is the password).
+[Node.js](https://nodejs.org/en/), version 8.12 or higher (i.e. the latest stable one). If you are a Windows user, you may want to use the virtual machine from the Q1 2018/19 Computer Organisation course and install Node.js yourself; the `student` password is `pwd` and the `root` password (for installing new software etc.) is `cse&(]]` (yes! those are not typos, this is the password). If you follow this course as a non-first year student, [check out this information page on the virtual machine](https://github.com/chauff/Web-Teaching/blob/master/virtual-machine-initialization.md).
 
 Two modern web browsers such as Chrome, Firefox, Edge, etc. to test your project code across browser implementations.
 
-Telnet (for Assignment 1): if you use a Linux derivative (e.g. Ubuntu, older versions of Mac OS), open a terminal and you are good to go; for new Mac OS versions you may need to [install telnet](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) yourself. If you are a Windows user please use the Windows Subsystem for Linux or use the Virtual Machine provided to you in Q1 (the `root` password is `cse&(]]`).
+Telnet (for Assignment 1): if you use a Linux derivative (e.g. Ubuntu, older versions of Mac OS), open a terminal and you are good to go; for new Mac OS versions you may need to [install telnet](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) yourself. If you are a Windows user please use the Windows Subsystem for Linux or use the Virtual Machine provided to you in Q1. You can also use Windows alternatives to telnet such as Putty.
 
 ## Course grading
 
@@ -85,6 +85,19 @@ Telnet (for Assignment 1): if you use a Linux derivative (e.g. Ubuntu, older ver
 Assignments are done in **pairs of two students** and are graded by student assistants in a binary manner (pass or fail). There are six assignments in total, three cover web programming topics and three cover database topics. While the assignments together make up only 20% of the final grade and are not required, we strongly recommend to tackle the assignments - they cover a lot of exam materials in a practical manner!
 
 We have two assessment moments: one for the Web technology assignments and one for the Database technology assignments. The three Web assignments are assessed in a single session of your team's own choosing: you can book a timeslot for the Web assessment in weeks 2.3, 2.4, 2.5 or 2.6. The assessment is interview-based. The assessment session can yield anything between 3x pass and 3x no-pass. The grading is conducted per student, i.e. you and your partner may receive different pass/no-pass results.
+
+The table below shows how the number of passes (maximum 6: 3x web and 3x database) are converted to the assignment grade:
+
+| Number of passes | Grade |
+|------------------|-------|
+| 6                | 10.0  |
+| 5                | 8.3   |
+| 4                | 6.7   |
+| 3                | 5.0   |
+| 2                | 3.3   |
+| 1                | 1.7   |
+| 0                | 0.0   |
+
 
 ## Course topics
 
@@ -107,8 +120,8 @@ In the past years, the web and database (DB) topics were interwoven (usually 1 l
 
 Exam topics are all topics covered in the lectures and the required readings. Content of the recommended activitivies/readings that goes beyond what is covered in the lectures/course book is not tested in the exam.
 
-- [Midterm 2015/16](https://chauff.github.io/documents/webdb-2017-18/midterm2.pdf)
-- [Final 2015/16](https://chauff.github.io/documents/webdb-2017-18/final2.pdf)
+- [Midterm 2015/16](https://github.com/chauff/chauff.github.io/blob/master/documents/webdb-2017-18/midterm2.pdf) ([with answers](https://github.com/chauff/chauff.github.io/blob/master/documents/webdb-2017-18/midterm2-answers.pdf))
+- [Final 2015/16](https://chauff.github.io/documents/webdb-2017-18/final2.pdf) ([with answers](https://chauff.github.io/documents/webdb-2017-18/final2-answers.pdf))
 - [Midterm 2016/17](https://chauff.github.io/documents/webdb-2017-18/midterm1.pdf)
 - [Final 2016/117](https://chauff.github.io/documents/webdb-2017-18/final1.pdf)
 
@@ -124,7 +137,7 @@ The first three assignments cover web technology topics.
 - [Assignment 2 (web)](Assignment-2.md)
 - [Assignment 3 (web)](Assignment-3.md)
 
-**Assessment**: the three web assignments are assessed in a **single** interview session with a TA; the interview will last 20-30 minutes. Each of the three assignments can be passed or failed (binary judgment, there are no grade levels) on an individual basis. The team can choose an assessment timeslot during the shared lab sessions starting in week 2.3. The last week for getting assessed on the web assignments is week 2.6.
+**Assessment**: the three web assignments are assessed in a **single** interview session with a TA; the interview will last 20-30 minutes. Each of the three assignments can be passed or failed (binary judgment, there are no grade levels) on an individual basis. The team can choose an assessment timeslot during the shared lab sessions starting in week 2.3. The last week for getting assessed on the web assignments is week 2.6. The assessment rubric is available [here](rubric.md).
 
 ## Demo application
 
@@ -138,9 +151,9 @@ and a game screen:
 
 <img src="https://raw.githubusercontent.com/chauff/Web-Teaching/master/img/A3-game-CSS-completed.png" alt="splash screen" width="600px">
 
-## Werkcolleges
+## Werkcolleges / Tutorials
 
-We also offer **5** optional werkcolleges (instruction lessons) that are intended for students **without prior programming experience** - 3 covering web topics and 2 covering database topics. Each lesson will demonstrate basic concepts through a set of short interactive exercises. These lessons are meant to reinforce lecture content, they do not introduce novel concepts.
+We also offer **5** optional werkcolleges (instruction lessons or tutorials) that are intended for students **without prior programming experience** - 3 covering web topics and 2 covering database topics. Each lesson will demonstrate basic concepts through a set of short interactive exercises. These lessons are meant to reinforce lecture content, they do not introduce novel concepts.
 
 The werkcolleges are given by [Assistant Prof. Julian Urbano](https://julian-urbano.info/) and Frank Mulder (teaching team CS). The following topics are covered:
 
@@ -158,7 +171,7 @@ Starting in week 2.1, there will be shared labs - similar to the setup of Q1. As
 
 ## Office hours
 
-For the web technology part, there will be **two** office hours per week (starting in week 2.1, ending in week 2.5): on **Mondays** and **Thursdays**, Claudia Hauff will be at the shared lab for the first hour (13:45-14:45).
+For the web technology part, there will be **two** office hours per week (starting in week 2.1, ending in week 2.5). On **Mondays** and **Thursdays**, Claudia Hauff will be at the shared lab: 14:45-15:45 (Monday) and 13:45-14:45 (Thursday).
 
 ## Interactive web technology exercises
 
@@ -205,15 +218,16 @@ For each lecture we provide a range of materials:
 
 ## Web lectures
 
-**Status update**: transcripts of Lectures 1 to 8 are online. The lecture slides are from the 2017/18 edition and will be updated in the following weeks.
+**Status update**: transcripts of Lectures 1 to 8 are online. Lectures slides will be added as the course weeks progress.
 
 ### Lecture 1
 
-The lecture covers HTTP ([2018/19 transcript](Lecture-1.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-http.pdf)).
+The lecture covers HTTP ([transcript](Lecture-1.md), [course intro slides](slides/cse1500-intro.pdf) and [lecture slides](slides/cse1500-lecture1.pdf)).
   
 - Required readings: *none*
 - Recommended activity:
   - :headphones: Listen to [this podcast](https://syntax.fm/show/044/how-to-learn-new-things-quickly) on how to learn new things quickly in the Web technology world.
+  - :tv: A [short video](https://www.youtube.com/watch?v=fXUni9WrUuw) (in Dutch) by CWI (Centrum Wiskunde & Informatica) to celebrate 30 years since the Netherlands was connected to the public Internet!
 - Recommended readings:
   - :closed_book: Chapters 1, 2 and 3 of [HTTP: The Definite Guide (O'REILLY 2002)](http://shop.oreilly.com/product/9781565925090.do).
   - [MDN overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP).
@@ -228,7 +242,7 @@ The lecture covers HTTP ([2018/19 transcript](Lecture-1.md), [2017/18 slides](ht
 
 ### Lecture 2
 
-This lecture covers web design and HTML5 ([2018/19 transcript](Lecture-2.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-html5.pdf)).
+This lecture covers web design and HTML5 ([transcript](Lecture-2.md) and [lecture slides](slides/cse1500-lecture2.pdf)).
 
 - Required readings:
   - :warning: Chapter 2 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
@@ -245,7 +259,7 @@ This lecture covers web design and HTML5 ([2018/19 transcript](Lecture-2.md), [2
   
 ### Lecture 3
 
-This lecture covers client-side JavaScript ([2018/19 transcript](Lecture-3.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-javascript.pdf)).
+This lecture covers client-side JavaScript ([transcript](Lecture-3.md) and [lecture slides](slides/cse1500-lecture3.pdf)).
 
 - Required readings:
   - :warning: Chapter 4 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
@@ -271,7 +285,7 @@ This lecture covers client-side JavaScript ([2018/19 transcript](Lecture-3.md), 
 
 ### Lecture 4
 
-This lecture covers Node.js ([2018/19 transcript](Lecture-4.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-nodejs.pdf)).
+This lecture covers Node.js ([transcript](Lecture-4.md) and [lecture slides](slides/cse1500-lecture4.pdf)).
 
 - Required readings:
   - :warning: Chapters 5 & 6 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
@@ -285,7 +299,7 @@ This lecture covers Node.js ([2018/19 transcript](Lecture-4.md), [2017/18 slides
   
 ### Lecture 5
 
-This lecture covers CSS ([2018/19 transcript](Lecture-5.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-css3.pdf)).
+This lecture covers CSS ([transcript](Lecture-5.md) and [lecture slides](slides/cse1500-lecture5.pdf)).
   
 - Required readings:
   - :warning: Chapter 3 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
@@ -302,7 +316,7 @@ This lecture covers CSS ([2018/19 transcript](Lecture-5.md), [2017/18 slides](ht
 
 ### Lecture 6
 
-This lecture covers advanced Node.js concepts ([2018/19 transcript](Lecture-6.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-nodejs-continued.pdf)).
+This lecture covers advanced Node.js concepts ([transcript](Lecture-6.md) and [lecture slides](slides/cse1500-lecture6.pdf)).
 
 - Required readings: *none*
 - Recommended activities:
@@ -318,7 +332,7 @@ This lecture covers advanced Node.js concepts ([2018/19 transcript](Lecture-6.md
 
 ### Lecture 7
 
-This lecture covers cookies and sessions ([2018/19 transcript](Lecture-7.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-cookies-sessions.pdf)).
+This lecture covers cookies and sessions ([transcript](Lecture-7.md) and [lecture slides](slides/cse1500-lecture7.pdf)).
 
 - Required readings: *none*
 - Recommended activities: *none*
@@ -332,7 +346,7 @@ This lecture covers cookies and sessions ([2018/19 transcript](Lecture-7.md), [2
 
 ### Lecture 8 
 
-This lecture covers web security topics ([2018/19 transcript](Lecture-8.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-security.pdf)).
+This lecture covers web security topics ([transcript](Lecture-8.md) and [lecture slides](slides/cse1500-lecture8.pdf)).
 
 - Required readings: *none*
 - Recommended activities:

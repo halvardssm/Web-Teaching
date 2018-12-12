@@ -2,7 +2,7 @@
 
 :point_right: [Overview of all Lecture 1 materials](README.md#lecture-1)
 
-## Table of Content <!-- omit in toc -->
+## Table of Contents <!-- omit in toc -->
 
 - [Web standards](#web-standards)
 - [Learning goals](#learning-goals)
@@ -56,8 +56,7 @@ Take a look at this [video pitch](https://vimeo.com/110256895) from the World Wi
 - Describe how web servers and clients interact with each other.
 - Write HTTP messages that request web resources from web servers and understand the responses.
 - Describe the different components of URLs and their purpose.
-- Understand and employ basic HTTP authentication.
-- Explain the difference between HTTP and HTTPS.
+- Understand and employ HTTP authentication.
 
 ## World Wide Web vs. Internet
 
@@ -107,7 +106,7 @@ On the web, clients and servers communicate with each other through **HTTP reque
 
 ![HTTP request and response](img/L1-http-req-res.png)
 
-How does the communication between the two devices work? Servers wait for data requests continuously and are able to serve many client requests at the same time. Servers host **web resources** that is any kind of content with an identity on the web. This can be static files, but also software programs or web cam gateways. As long as they are accessible through an identifier, they can be considered as web resources.
+How does the communication between the two devices work? Servers wait for data requests continuously and are able to serve many client requests at the same time. Servers host **web resources** that is any kind of content with an identity on the web. This can be static files, web services, but also dynamically generated content. As long as they are accessible through an identifier, they can be considered as web resources.
 The **client initiates the communication**, sending an **HTTP request** to the server, e.g. to access a particular file. The server sends an **HTTP response** - if indeed it has this file and the client is authorized to access it, it will send the file to the client, otherwise it will send an error message. The client, i.e. most often the web browser, will then initiate an action, depending on the type of content received - HTML files are rendered, music files are played and executables are executed.
 
 ### Network communication
@@ -126,7 +125,7 @@ Many network protocols exist, to us only three are of importance:
 - the Transmission Control Protocol (**TCP**), and
 - the HyperText Transfer Protocol (**HTTP**).
 
-HTTP is at the top of the stack, and TCP builds on top of IP. Important to know is that HTTP is **reliable** - it inherits this property is inherited from TCP, which is reliable (in contrast to IP, which is not). This means, that the data appears **in order** and **undamaged**! This guarantee allows video streaming and other applications: HTTP **guarantees** that the video segments arrive at the client in the correct order; without this guarantee, all segments of a video would have to be downloaded and then assembled in the right order, before you could watch it!
+HTTP is at the top of the stack, and TCP builds on top of IP. Important to know is that HTTP is **reliable** - it inherits this property from TCP, which is reliable (in contrast to IP, which is not). This means, that the data appears **in order** and **undamaged**! This guarantee allows video streaming and other applications: HTTP **guarantees** that the video segments arrive at the client in the correct order; without this guarantee, all segments of a video would have to be downloaded and then assembled in the right order, before you could watch it!
 
 ### :bangbang: Activity
 
@@ -260,14 +259,14 @@ Content is often encoded, and in particular **compressed**. The four common enco
 - `compress`
 - `deflate`
 - `identity` (this encoding indicates that no encoding should be used)
-  
+
 How do client and server negotiate acceptable encodings? If the server would send content in an encoding for which the client requires specific software to decode but does not have, the client receives a blob of data but is unable to interpret it. To avoid this situation, the client sends in the HTTP request a list of encodings it can deal with. This happens in the `Accept-Encoding` request header, e.g. `Accept-Encoding: gzip, deflate`.
 
 But why bother with encodings at all? If an image or video is compressed by the server before it is sent to the client, **network bandwidth is saved**. There is a **tradeoff**, however: compressed content needs to be decompressed by the client, which **increases the processing costs**.
 
 ### Content-MD5
 
-Data corruption occurs regularly, the Internet spans the entire globe, billions of devices are connected to it. To route a message it has to pass through several devices, all of which run on software. And software is buggy (rankings of the worst software bugs in history exist, [here is one from WIRED in 2005](https://www.wired.com/2005/11/historys-worst-software-bugs/)). 
+Data corruption occurs regularly, the Internet spans the entire globe, billions of devices are connected to it. To route a message it has to pass through several devices, all of which run on software. And software is buggy (rankings of the worst software bugs in history exist, [here is one from WIRED in 2005](https://www.wired.com/2005/11/historys-worst-software-bugs/)).
 
 MD5 acts as a sanity check.
 
@@ -276,7 +275,7 @@ MD5 stands for **message digest** and is an important data verification componen
 `Content-MD5` remains in use today as a simple checking mechanism (e.g. [Amazon's S3 service relies on it](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html)), although it has been removed in the HTTP/1.1 revision of 2014, as indicated in [RFC 7231, Appendix B](https://tools.ietf.org/html/rfc7231):
 
 ```
-The Content-MD5 header field has been removed because it was inconsistently 
+The Content-MD5 header field has been removed because it was inconsistently
 implemented with respect to partial responses.
 ```
 
@@ -322,7 +321,7 @@ In HTTP/1.1 the client **always** initiates the conversation with the server via
 
 ![Twitter update](img/L1-twitter-example.png)
 
-In both examples, the encircled numbers are updated *on the fly*, without the user having to manually refresh the page. 
+In both examples, the encircled numbers are updated *on the fly*, without the user having to manually refresh the page.
 
 This can be achieved through **polling**: the client **regularly** sends an HTTP request to the server, the server in turn sends its HTTP response and if the numbers have changed, the client renders the updated numbers. This of course is a wasteful approach - the client might send hundreds or thousands of HTTP request (depending on the chosen update frequency) that always lead to the same HTTP response.
 
@@ -400,7 +399,7 @@ Different status codes exist that provide the client with some level of informat
 | `4xx`                  | Client error |
 | `5xx`                  | Server error                 |
 
-Status codes starting with 100 provide information to the client, e.g. `100 Continue` tells the client that the request is still ongoing and has not been rejected by the server. 
+Status codes starting with 100 provide information to the client, e.g. `100 Continue` tells the client that the request is still ongoing and has not been rejected by the server.
 
 Status code `200 OK` is the most common one - it indicates that the HTTP request was successful and the response contains the requested web resource (or a part of it).
 
@@ -408,7 +407,7 @@ Status codes in the three hundred range most often point to a redirect: a resour
 
 ![Network monitor redirect](img/L1-redirect.png)
 
-Here, status code `301 Moved Permanently` indicates that the resource at http://volkskrant.nl has been moved elsewhere for good. The `Location` header tells us the new location (http://volkskrant.nl).
+Here, status code `301 Moved Permanently` indicates that the resource at http://volkskrant.nl has been moved elsewhere for good. The `Location` header tells us the new location (https://volkskrant.nl).
 
 Status codes starting with 4 indicate an error on the client side - most well known here is `404: Not Found`, i.e. the web resource or entity the client requests, does not exist on the server.
 
@@ -416,7 +415,7 @@ Errors on the server side start with 5; one relatively common status code is `50
 
 ## HTTP methods
 
-Conisder the first line of our introductory [HTTP request message](#http-request-message) example:
+Consider the first line of our introductory [HTTP request message](#http-request-message) example:
 
 ```console
 GET / HTTP/1.1
@@ -436,7 +435,7 @@ The following are the most common HTTP methods:
 - `OPTIONS` is helpful to determine what kind of methods a server supports and finally
 - `DELETE` can be used to remove documents from a web server
 
-This is not an exhaustive list of methods and not all servers enable or implement all the methods shown here. 
+This is not an exhaustive list of methods and not all servers enable or implement all the methods shown here.
 
 ### :bangbang: Activity
 
@@ -551,7 +550,7 @@ From back to front:
 - `<query>`: Parameters passed to gateway resources, i.e. applications [identified by the path] such as search engines.
 - `<params>`: Additional input parameters applications may require to access a resource on the server correctly. Can be set per path segment.
 - `<path>`: the local path to the resource
-- `<port>`: the port on which the server is expecting requests for the resource
+- `<port>`: the port on which the server is expecting requests for the resource (ports enable multiplexing: multiple services are available on one location)
 - `<host>`: domain name (host name) or numeric IP address of the server
 - `<user>:<password>`: the username/password (may be necessary to access a resource)
 - `<scheme>`: determines the protocol to use when connecting to the server.
@@ -632,7 +631,7 @@ characters that are allowed in host name labels (letters, digits, and
 hyphens).
 ```
 
-The cyrillic URL example above transforms into the following ASCII URL: `http//:xn—80aealotwbjpid2k.xn—p1ai`. A URL already in ASCII format remains the same after Punycode encoding.
+The cyrillic URL example above transforms into the following ASCII URL: `http://xn--80aealotwbjpid2k.xn--p1ai/`. A URL already in ASCII format remains the same after Punycode encoding.
 
 One word of caution though: **mixed scripts** (i.e. using different alphabets in a single URL) are a potential security issue! Consider the following URL: https://рayрal.com. It looks like https://paypal.com, the well-known e-payment website. It is not! Notice that the Russian letter *r* looks very much like a latin *p* and a potential attacker can use this knowledge to create a fake paypal website (to gather credit card information) and lead users on with the malicious, but on first sight correctly looking paypal URL.
 
@@ -649,7 +648,7 @@ But of course, this is not how today's web works: servers **do** identify device
 - user login;
 - fat URLs.
 
-If you already know a bit more about web development you will miss in this list cookies and sessions. We cover these concepts in [Lecture 7](Lecture-7.md). 
+If you already know a bit more about web development you will miss in this list cookies and sessions. We cover these concepts in [Lecture 7](Lecture-7.md).
 
 We now cover each of the four identification options listed above in turn.
 
@@ -665,9 +664,9 @@ The HTTP header fields we have seen so far were only a few of all possible ones.
 | `Client-IP`           | Client's IP address         |
 | `Authorization`        | Username and password       |
 
-All of the shown header fields are request header fields, i.e. sent from the client to the server. 
+All of the shown header fields are request header fields, i.e. sent from the client to the server.
 
-The first three header fields contain information about the user such as the her email address, the identifying string for the user's device (though here device is rather general and refers to a particular type of mobile phone, not the specific phone of this user), and the web page the user came from.
+The first three header fields contain information about the user such as an email address, the identifying string for the user's device (though here device is rather general and refers to a particular type of mobile phone, not the specific phone of this user), and the web page the user came from.
 
 In reality, users rarely publish their email addresses through the `From` field, this field is today mostly used by web crawlers; in case they break a web server due to too much crawling, the owner of the web server can quickly contact the humans behind the crawler via email. The `User-Agent` allows device-specific customization, but not more. The `Referer` is similarly crude: it can tell us something about a user's interests but does not enable us to uniquely identify a user.
 
@@ -736,6 +735,24 @@ This by itself is not critical, as long as users are aware of this. However, use
 Overall, basic authentication is the best of the four authentication options discussed; it prevents accidental or casual access by curious users to content where privacy is desired but not essential. Basic authentication is useful for personalization and access control within a friendly environment such as an intranet.
 
 In the wild, i.e. the general web, basic authentication should only be used in combination with secure HTTP (most popular variant being https with URL scheme `https`) to avoid sending the username/password combination in the clear across the network. Here, request and response data are encrypted before being sent across the network.
+
+## Secure HTTP
+
+So far we have seen *lightweight authentication* approaches. Those are not useful for bank transactions or confidential data. Secure HTTP should provide:
+
+- Server authentication (client is sure to talk to the right server)
+- Client authentication (server is sure to talk to the right client)
+- Integrity (client and server are sure their data is intact)
+- Encryption
+- Efficiency
+- Adaptability (to the current state of the art in encryption)
+
+**HTTPS** is the most popular secure form of HTTP. The URL scheme is `https` instead of `http`. Now, request and response data are **encrypted** before being sent across the network. In the layered network architecture, an additional layer is introduced: the Secure Socket Layer (SSL):
+
+![HTTPS](img/L1-https.png)
+
+Note, that client and server have to **negotiate** the cryptographic protocol to use (the most secure protocol both sides can handle). The encryption employed is only as secure as the weaker side allows: if the server has the latest encryption protocols enabled but the client has not been updated in years, a weak encryption will be the result.
+
 
 ## Self-check
 

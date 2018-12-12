@@ -1,6 +1,6 @@
 # Assignment 1
 
-The first part of this assignment gives you hands-­on experience in **HTTP**. In the second part you will make a head start with the design of your **board game web application**.
+The first part of this assignment gives you hands-on experience in **HTTP**. In the second part you will make a head start with the design of your **board game web application** (which you will further develop in assignments 2 and 3).
 
 ## 0. Preliminaries
 
@@ -28,14 +28,14 @@ If you get lost within the assignment, use this overview of deliverables to get 
 | 4.3  | Description of six game features                   |
 | 5.1  | Splash screen design (wireframe)                   |
 | 5.2  | Game screen design (wireframe)                     |
-| 5.3  | →→→ upload 5.1/5.2 to :bulb: Brightspace                |
+| 5.3  | →→→ upload 5.1/5.2 to :bulb: Brightspace forum               |
 | 6  | Two html files                                     |
 
 All deliverable text/imagery (apart from 6.) must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team name.
 
 Submit your two html files in the form of a zipped folder.
 
-The PDF and code have to be uploaded by one of the team members to :bulb: Brightspace under **CSE Web assessment** (find the category your group belongs too) before the assessment session with the TAs. This means that the outcomes of Assignment 1, 2 and 3 are **all** uplodated to the same directory! 
+The PDF and code have to be uploaded by one of the team members to :bulb: Brightspace under **CSE Web assessment** (find the category your group belongs too) before the assessment session with the TAs. This means that the outcomes of Assignment 1, 2 and 3 are **all** uploaded to the same directory!
 Make sure to name your files with an **A1** prefix!
 
 **To pass this assignment, you must have completed all tasks and be able to answer the questions of the TAs.**
@@ -51,11 +51,17 @@ Make sure to name your files with an **A1** prefix!
 
 - Be aware of the **backspace key** when *telneting*: while on a normal command line a backspace deletes the last character typed, within the `telnet` environment this key is forwarded to the server instead. In other words: **do not use the backspace key when telneting**.
 
+- This exercise requires you to use `telnet`. If you use a Linux derivative (e.g. Ubuntu, older versions of Mac OS), open a terminal and you are good to go; for new Mac OS versions you may need to [install telnet](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) yourself. 
+
+- If you are a Windows user, use the Windows Subsystem for Linux or use the Virtual Machine provided to you in Q1 (the `root` password is `cse&(]]`). The Virtual Machine can be downloaded using the following magnet link:
+`magnet:?xt=urn:btih:83a92d258af74cb6b22d3e64ce26c38f6ca57416&dn=TUD-CSE-2018-2019.ova&tr=udp%3A%2F%2Ftracker.open-internet.nl%3A6969%2Fannounce`. As an alternative (if you really do not want to use Linux and stick to Windows), use [Putty](https://www.putty.org/) with the following settings:
+  - Use the "Raw" connection type (not "Telnet").
+  - For "Close window on exit", use "Never".
+  - It may be useful to write your commands inside an editor first, and paste them by clicking the right mouse button inside the Putty session (which you start using the "Open" button).
 ---
 
-This exercise requires you to use `telnet`. If you use a Linux derivative (e.g. Ubuntu, older versions of Mac OS), open a terminal and you are good to go; for new Mac OS versions you may need to [install telnet](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) yourself. If you are a Windows user please use the Windows Subsystem for Linux or use the Virtual Machine provided to you in Q1 (the `root` password is `cse&(]]`).
-
-Use `telnet` to request the contents of the Dutch rainfall radar section of the `weer.nl` website: [weer.nl/regenradar/nederland](http://www.weer.nl/regenradar/nederland). Start your *conversation* with the web server by typing the following into the terminal:
+**Exercise**:
+Use `telnet` to request the contents of the Dutch rainfall radar section of the `weer.nl` website: [weer.nl/regenradar/nederland](http://www.weer.nl/regenradar/nederland). Start your *conversation* with the web server by typing the following into the terminal, and then perform HTTP requests to fetch the contents:
 
 ```console
 telnet weer.nl 80
@@ -63,7 +69,7 @@ telnet weer.nl 80
 
 ### 1.1)
 
-Write down the HTTP requests you made, the returned responses (e.g. a page has moved or is faulty) until you receive the contents of the sports news page. Always use `HEAD` first to retrieve meta-­data about the resource.
+Write down the HTTP requests you made, the returned responses (e.g. a page has moved or is faulty) until you receive the contents of the Dutch rainfall radar page. Always use `HEAD` first to retrieve meta-­data about the resource.
 
 ### 1.2)
 
@@ -71,7 +77,9 @@ Does the content correspond to what you see when accessing the page with your br
 
 ### 1.3)
 
-What is the purpose of the `X-UA-Compatible` tag in the header information?
+What is the purpose of the `X-UA-Compatible` or the `X-Cache` tag in the header information (you should have seen one of the two or both - if you saw both, pick one to explain)?
+
+*Note: 1.3) amended November 16, 2018*
 
 ### 1.4)
 
@@ -98,6 +106,8 @@ Content-length:12
 Hello World!
 <carriage return>
 ```
+
+*Reminder: [Carriage return](https://developer.mozilla.org/en-US/docs/Glossary/CRLF) in the code snippets indicates when an empty line is expected. Press `<Enter>` to add it.*
 
 With this code, we have modified the resource accessible at `/put` to now hold the string `Hello World!`. The server sends back in the response the data just uploaded -­ the response is of content-­type JSON; we are interested in the `data` field, which should contain `Hello World!` if everything worked correctly. Try it for yourself!
 
@@ -219,4 +229,4 @@ Once you have completed the design of your app, head over to CSE1500's :bulb: Br
 
 ## 6. Your own board game app: HTML
 
-Similar to the course book, take your design as a starting point and create the respective **two HTML documents**. These documents should **only** contain HTML, no CSS or JavaScript. You can also check the `game.html` and `splash.html` files in the [demo game](demo-code/balloons-game/public) to get an idea on the expected content (ignore the few lines of code loading JavaScript and CSS files, this will come in Assignments 2 and 3).
+Similar to the course book, take your design as a starting point and create the respective **two HTML documents**. These documents should **only** contain HTML, no CSS or JavaScript. To get an idea on the expected amount of content, check [`game.html`](https://github.com/chauff/Web-Teaching/blob/master/demo-code/balloons-game/public/game.html) and [`splash.html`](https://github.com/chauff/Web-Teaching/blob/master/demo-code/balloons-game/public/splash.html) of the demo board game. Ignore the few lines of code loading JavaScript and CSS files, these will be covered in Assignments 2 and 3 respectively. 

@@ -2,7 +2,7 @@
 
 :point_right: [Overview of all Lecture 2 materials](README.md#lecture-2)
 
-## Table of Content <!-- omit in toc -->
+## Table of Contents <!-- omit in toc -->
 - [Learning goals](#learning-goals)
 - [Web sites vs. web applications vs. the web as a platform](#web-sites-vs-web-applications-vs-the-web-as-a-platform)
 - [Electron](#electron)
@@ -54,7 +54,7 @@ Do web technologies also help you to create desktop apps? Indeed, they do! [Elec
 
 Electron itself uses [Node.js](https://nodejs.org/en/), the server-side JavaScript runtime we cover in a later lecture together with [Chromium](https://www.chromium.org/), an open-source web runtime (i.e. browser).
 
-The major benefit of Electron should be clear: instead of writing three separate desktop variants (one for each operating system) you only have to write and maintain one. New features are integrated in one application instead of three, which reduces feature delivery time. For these reasons, many well-known applications today are built on Electron, including [Visual Studio Code](https://code.visualstudio.com/) (the IDE we recommend you use), the Slack app, [Atom](https://atom.io/) and [many, many more](https://electronjs.org/apps). 
+The major benefit of Electron should be clear: instead of writing three separate desktop variants (one for each operating system) you only have to write and maintain one. New features are integrated in one application instead of three, which reduces feature delivery time. For these reasons, many well-known applications today are built on Electron, including [Visual Studio Code](https://code.visualstudio.com/) (the IDE we recommend you use), the Slack app, [Atom](https://atom.io/) and [many, many more](https://electronjs.org/apps).
 
 If you ever wanted to know how *Windows 95* looks like, there is an [Electron app for that as well](https://github.com/felixrieseberg/windows95). It looks like this:
 
@@ -70,21 +70,21 @@ Web design is not trivial. However, a few basic rules go a long way. Most of the
 
 The way a web site or web application (I tend to use the terms interchangeably here; the rules apply to both apps and sites) works should be self-evident; the user should not have to expend **cognitive effort** to understand what she can do.
 
-Consider this example of [ebay.com](https://www.ebay.com/):
+Consider this example of [ebay.com](https://www.ebay.com/) :point_down:
 
 ![ebay web site](img/L2-ebay.png)
 
 <sup>Screenshot taken on September 10, 2018</sup>
 
-Here, it is very clear for the user what she can do: search for products, browse through the available items via product categories and shop for the upcoming fall season.
+:point_up: Here, it is very clear for the user what she can do: search for products, browse through the available items via product categories and shop for the upcoming fall season.
 
-Contrast ebay with the following older example from [koopplein](https://web.archive.org/web/20140207233217/http://koopplein.nl/):
+Contrast ebay with the following older example from [koopplein](https://web.archive.org/web/20140207233217/http://koopplein.nl/) :point_down:
 
 ![koopplein web site](img/L2-koopplein.png)
 
 <sup>Screenshot taken February 8, 2014</sup>
 
-Here, it is not self-evident for the user how to act to achieve her goals and major questions are raised:
+:point_up: It is not self-evident for the user how to act to achieve her goals and major questions are raised:
 
 - How do I get to the offers?
 - What if I want to look at offers from Delft **and** Rijswijk instead of one or the other?
@@ -100,37 +100,37 @@ Users should also **not get lost within a web site**. A site should provide user
 
 ![ebay web site](img/L2-ebay2.png)
 
-Lastly, it should be easy for the user to **distinguish different parts of a site** such as advertisement vs. content. Here is an example from Google that does a poor job in this respect: it is not obvious on first sight that the first search result is indeed a paid advertisement instead of a so-called "organic" search result:
+Lastly, it should be easy for the user to **distinguish different parts of a site** such as advertisement vs. content. Here :point_down: is an example from Google that does a poor job in this respect. It is not obvious on first sight that the first search result is indeed a paid advertisement instead of a so-called "organic" search result:
 
-![google web site](img/L2-google.png)
+![Google web site recent](img/L2-google.png)
 
-A few years ago ([August 15, 2013](https://web.archive.org/web/20130815204510/https://www.google.com/search?q=toyota) to be precise) Google was a lot more forthcoming when it came to notifying its users about advertisements:
+A few years ago ([August 15, 2013](https://web.archive.org/web/20130815204510/https://www.google.com/search?q=toyota) to be precise) Google was a lot more forthcoming when it came to notifying its users about advertisements :point_down:
 
-![google web site](img/L2-google2.png)
+![Google web site 2013](img/L2-google2.png)
 
-It should be mentioned though that Google is not the only offender here, take this example from Twitter which is similarly poorly designed in terms of content distinction between organic tweets and promoted (i.e. paid) ones:
+It should be mentioned though that Google is not the only offender here, take this example :point_down: from Twitter which is similarly poorly designed in terms of content distinction between organic tweets and promoted (i.e. paid) ones:
 
-![google web site](img/L2-twitter.png)
+![Twitter web site](img/L2-twitter.png)
 
 ### Rule: Minimize noise and clutter
 
-The rule does not have to be explained, here are two examples that should make things clear:
+The rule does not have to be explained, here are two examples that should make things clear :point_down:
 
 ZDNet crawled on [March 31, 2001](https://web.archive.org/web/20010331202808/http://www4.zdnet.com:80/):
 
 ![ZDNet web site](img/L2-zdnet-2001.png)
 
-vs. ZDNet crawled on [August 31, 2014](https://web.archive.org/web/20140831235129/http://www.zdnet.com/):
+vs. ZDNet crawled on [August 31, 2014](https://web.archive.org/web/20140831235129/http://www.zdnet.com/) :point_down:
 
 ![ZDNet web site](img/L2-zdnet-2014.png)
 
-While it is not hard to go back to very old web designs and find faults in them, it should also be pointed out that in those times, every single HTTP request/response pair was time-consuming (the Internet was slow) and expensive (). It made sense to push as much content as possible into a single web page which could then be sent to the client in a single HTTP response.
+While it is not hard to go back to very old web designs and find faults in them, it should also be pointed out that in those times, every single HTTP request/response pair was time-consuming (the Internet was slow) and expensive. It made sense to push as much content as possible into a single web page which could then be sent to the client in a single HTTP response.
 
 ### Rule: If you cannot make it self-evident, make it self-explanatory
 
 Self-explanatory sites require users to expend a small amount of cognitive effort. When a site is not self-explanatory, a small amount of explanatory text can go a long way. In today's mobile world where a lot of content is accessed [*mobile first*](https://mayvendev.com/blog/mobilefirst), it is also vital to keep the mobile user in mind as well who has to deal with a small screen, a touch-based interface and possibly many distractions while surfing the web.
 
-A positive example of this rule is the following Surveymonkey ([December 1, 2013](https://web.archive.org/web/20131201000510/https://www.surveymonkey.com/)) splash screen:
+A positive example of this rule is the following Surveymonkey ([December 1, 2013](https://web.archive.org/web/20131201000510/https://www.surveymonkey.com/)) splash screen :point_down:
 
 ![Surveymonkey](img/L2-surveymonkey.png)
 
@@ -148,7 +148,7 @@ Instead, the average user:
 - clicks on the first link they find;
 - depends a lot on the browser's back button (and not all web applications can deal with it);
 - does not read instructions.
-  
+
 A web application should be designed based on **user reality**. **Usability testing** is an important step to create a well-designed web application. The development cycle consists of *designing*-*testing*-*reviewing*:
 
 ![Web app development cycle](img/L2-cycle.png)
@@ -200,13 +200,13 @@ The home page (or entry page) of a web application should answer a number of ess
 - Why **should** I be here?
 - What do they **have** here?
 
-Surprisingly many home pages are not able to answer these questions. Take for example the home page of https://coffeecompany.nl/:
+Surprisingly many home pages are not able to answer these questions. Take for example this entry page:
 
 ![Coffeecompany](img/L2-coffeecompany.png)
 
 <sup>Screenshot taken October 18, 2018</sup>
 
-It is not obvious that the core business here is a chain of small cafes in the Netherlands. 
+What is the core business of this company? This is the homepage of a Dutch cafe chain: https://coffeecompany.nl/ - not something easily guessable from the entry page.
 
 Another serial offender of the entry page checklist are university home pages as immortalized in [this xkcd comic](http://xkcd.com/773/).
 
@@ -239,7 +239,7 @@ Before HTML5 we had **XHTML** and HTML 4.01. XHTML is a reformulation of HTML 4 
 
 XHTML was designed to make processing of web pages **easier for machines** by having a very strict set of rules. The problem though was that (X)HTML is written by developers, not machines and it turned out to be too much hassle to write valid XHTML. Moreover, browsers were and are able to render invalid XHTML pages properly (so why even try to write valid XHTML?) and thus XHTML was eventually abandoned in favor of HTML5, which is not only less strict but also added a host of new features to the language.
 
-With this introduction of new features **browser compatibility** issues returned: some browser vendors are faster than others in implementing W3C standards (in addition to implementing their own non-standardized features). A good resource to check which browser versions support which HTML5 feature and to what extent is https://caniuse.com/. 
+With this introduction of new features **browser compatibility** issues returned: some browser vendors are faster than others in implementing W3C standards (in addition to implementing their own non-standardized features). A good resource to check which browser versions support which HTML5 feature and to what extent is https://caniuse.com/.
 
 As a concrete example, here is the browser support overview of HTML5 form features as provided by [caniuse](https://caniuse.com/#search=form):
 
@@ -256,7 +256,7 @@ The initial list of HTML tags (1991/92) was **static**: `<title> <a> <isindex> <
 HTML5 introduced a number of **semantic HTML elements** including `<article> <footer> <header> <main> <aside> <section> <output>`. As a guideline, when creating an HTML document, it is always best to select the **most specific** element to represent your content (instead of only using `<div>`'s). Semantic elements provide **meaning** but do not force a particular presentation. Older HTML elements (pre-HTML5) often do force a particular presentation, e.g. `<b>` or `<i>`. At the same time, those heavily used HTML elements cannot be moved to an obsolete state - as this would inevitably break a large portion of the web. For the browser vendors, backwards compatibility is a necessity, not an option. It should be pointed out that **semantic HTML** is quite different from the grand vision of the [Semantic Web](https://www.w3.org/standards/semanticweb/):
 
 ```
-The Semantic Web is a Web of data — of dates and titles and part numbers and chemical 
+The Semantic Web is a Web of data — of dates and titles and part numbers and chemical
 properties and any other data one might conceive of.
 ```
 
@@ -275,7 +275,7 @@ Informally, one could say that the W3C standardizes what the browser vendors hav
 
 Consensus building takes time. HTML5 for instance was a candidate recommendation in Q4-2012 and became a W3C recommendation in Q4-2014. HTML5.1 was a candidate recommendation in Q1-2015 and became a recommendation in Q4-2016.
 
-As of August 2018, [HTML5.3](https://www.w3.org/TR/html53/) has a *Working Draft* status; if you look at the standard text you will find it to be very elaborate (this is a 1,000+ pages document!) and precise, sufficiently so that any browser vendor can take the text and implement the features described in it without ambiguity. 
+As of August 2018, [HTML5.3](https://www.w3.org/TR/html53/) has a *Working Draft* status; if you look at the standard text you will find it to be very elaborate (this is a 1,000+ pages document!) and precise, sufficiently so that any browser vendor can take the text and implement the features described in it without ambiguity.
 
 In rare cases, features added to a web standard can also be removed again, the [AppCache](https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache) is a prime example of this: it was developed as technology to enable offline web applications in a simple manner (by adding a manifest file to a site containing no more than a few lines of text), but turned out to have so many [pitfalls](https://alistapart.com/article/application-cache-is-a-douchebag) that it was eventually abandoned in favor of another set of technologies ([Service Workers](https://developers.google.com/web/fundamentals/primers/service-workers/)). However, it is [still supported by all major browsers](https://caniuse.com/#search=appcache):
 
